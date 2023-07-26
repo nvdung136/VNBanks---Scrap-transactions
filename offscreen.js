@@ -75,12 +75,16 @@ function ValidateEle(ListEle){
 
 function DateUpdate(DateSection){
   const dateString = DateSection.textContent;
-  if(dateString.match('ago')) 
+  if(dateString.match('ago') || dateString.match('ngày')) 
   {
       const dayApart = dateString.slice(0,dateString.indexOf(" "));
       return find_date(dayApart);
   }
-  if(dateString.match('Today'))
+  if(dateString.match('Yesterday') || dateString.match('qua'))
+  {
+    return find_date(1);
+  }
+  if(dateString.match('Today') || dateString.match('nay'))
   {
     return find_date(0);
   }
