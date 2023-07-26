@@ -11,15 +11,16 @@ Supported banks - [card or account]:
 Using instruction:
 
 <+> Disclaimer: Due to strict regulation of banking/finance sites and Chrome browser, the extension... 
-... CAN NOT and WILL NOT be able to:{
- *! Access the underline API 
- *! Interfere with any interaction between the user and the page
- *! Change or record any user data 
- *! Remote by or connect to any other entity on the internet
- }
+... CAN NOT and WILL NOT:
+{
+* ! Access the underline API 
+* ! Interfere with any interaction between the user and the page
+* ! Change or record any user data 
+* ! Remote by or connect to any other entity on the internet
+}
 
 <-> Instruction: (developed and tested on Chrome version 115)
- -> Install or unbundle the extension onto their chrome browser.
+ -> Install or unbundle the extension onto their Chrome browser.
  -> User to log in to his/her bank to check all transaction history
  -> Interact (by hitting 'load more') with the page to display all the needed transactions
  -> Then open extension - hit update - all transactions will be recorded (the period will be shown)
