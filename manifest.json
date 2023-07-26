@@ -1,0 +1,25 @@
+{
+  "name": "Content Script",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action":{
+    "default_popup":"pop_up.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://onlinebanking.techcombank.com.vn/accounts/*",
+        "https://onlinebanking.techcombank.com.vn/*"
+      ]
+    }
+  ],
+  "permissions": ["offscreen"]
+}
+
+
+//Under developing from Van-Dung NGO (email: nvdung136@gmail.com)
+//Original release to github in July of 2023.
