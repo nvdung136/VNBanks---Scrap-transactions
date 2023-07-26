@@ -5,8 +5,8 @@
  * Save time managing transaction/finance data across all different banks
 
 <+> Supported banks - [card or account]:
-    * TCB - [Transaction account (debit card),...]
-    ... (to be updated)
+* TCB - [Transaction account (debit card),...]
+* ... (to be updated)
 
 <+> Instruction: (developed and tested on Chrome version 115)
  * -> Install or unbundle the extension onto their Chrome browser.
