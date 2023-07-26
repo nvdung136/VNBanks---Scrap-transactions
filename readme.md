@@ -18,8 +18,8 @@ Using instruction:
 * ! Remote by or connect to any other entity on the internet
 
 <-> Instruction: (developed and tested on Chrome version 115)
- -> Install or unbundle the extension onto their Chrome browser.
- -> User to log in to his/her bank to check all transaction history
- -> Interact (by hitting 'load more') with the page to display all the needed transactions
- -> Then open extension - hit update - all transactions will be recorded (the period will be shown)
- -> Hit download to get the CSV file locally 
+ * -> Install or unbundle the extension onto their Chrome browser.
+ * -> User to log in to his/her bank to check all transaction history
+ * -> Interact (by hitting 'load more') with the page to display all the needed transactions
+ * -> Then open extension - hit update - all transactions will be recorded (the period will be shown)
+ * -> Hit download to get the CSV file locally 
