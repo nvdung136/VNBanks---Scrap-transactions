@@ -1,5 +1,5 @@
 {
-  "name": "Content Script",
+  "name": "VNBanks History Scrap",
   "version": "1.0",
   "manifest_version": 3,
   "background": {

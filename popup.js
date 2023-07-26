@@ -26,7 +26,6 @@ async function OnReceive(message) {
     var _Line2Dis="";
     if(message.target !== 'popup') return;
     const DataArray = message.string;
-    console.log(DataArray);
     for(let i=1; i< DataArray.length; i++){
         let WrtLine ='';
         for (let n=0;n<DataArray[i].length;n++){

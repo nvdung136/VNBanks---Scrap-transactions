@@ -11,7 +11,6 @@ async function OnReceive(message) {
   // Return early if this message isn't meant for the offscreen document.
   if (message.target !== 'offscreen') return false;
   else {
-    console.log(message.pipelineID);
     keyWords = init_keyW_lst(message._addInfo);
     const [ParsedRes,period] = await ParsingHTML2String(message.string); 
     SendMess(ParsedRes,period);
@@ -44,11 +43,9 @@ async function SendMess(data,period) {
 async function ParsingHTML2String(MessString){
     const parser = new DOMParser();
     const ParsDoc = parser.parseFromString(MessString, 'text/html'); 
-    // return a html document
     const TransList = ParsDoc.getElementsByTagName(keyWords[0]);
     var SpawnChilds = TransList[0].children;
     let ArrayString,period = ValidateEle(SpawnChilds);
-    // console.log(ArrayString);
     return ArrayString,period
   } 
 
@@ -65,7 +62,6 @@ function ValidateEle(ListEle){
         [TR.Amount,TR.Balance,TR.Sinfo,TR.Info]  = ItemParsing(Elem);
         let Ary = [TR.date.toString(),TR.Amount.toString(),TR.Sinfo.toString(),TR.Info.toString(),TR.Balance.toString()]
         ReturnArray.push(Ary);
-        // console.log(Ary);
         break;  
       case 'DIV':
         if(Elem.classList.contains(keyWords[2])) 
@@ -73,7 +69,7 @@ function ValidateEle(ListEle){
       break;
       }
   }
-  const period = `${ReturnArray[1][0]} to ${TR.date.toString()}`
+  const period = `${TR.date.toString()} to ${ReturnArray[1][0]}`
   return [ReturnArray,period];
 }
 
@@ -84,9 +80,14 @@ function DateUpdate(DateSection){
       const dayApart = dateString.slice(0,dateString.indexOf(" "));
       return find_date(dayApart);
   }
+  if(dateString.match('Today'))
+  {
+    return find_date(0);
+  }
   else 
     return dateString;
 }
+
 
 function find_date(daysApart){
   const date = new Date();
@@ -108,7 +109,6 @@ function ItemParsing(Item)
   //Transaction amount and balance
   const _Balance = _Content[0].getElementsByClassName(keyWords[4]);
   const _Direction = _Content[0].getElementsByClassName(keyWords[5]);
-  // console.log(_Content[0]);
   const Amount = (_Direction[0].classList.contains(keyWords[6])) ? ('-' + _Balance[0].textContent) : (_Balance[0].textContent);
   const Balance = _Balance[2].textContent;
   //Transaction Sinfo and info
@@ -116,8 +116,6 @@ function ItemParsing(Item)
   const _infoMessage = _Content[0].getElementsByClassName(keyWords[8]);
   const Sinfo = _infoName[0].textContent.trim();
   const Info = _infoMessage[0].textContent.trim()
-  // console.log(`Short info: ${sInfo} \nFull info: ${Info}`);
-  // console.log(`Transaction amount: ${Amount} || Remaining balance: ${Balance} \n\n`)
   return  [Amount,Balance,Sinfo,Info];
 }
 
