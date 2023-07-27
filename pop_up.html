@@ -1,8 +1,14 @@
 <html>
-  <link rel="stylesheet" href="./css/w3.css">
-  <link rel="stylesheet" href="./css/googleapisFont.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <body>
     <div class="w3-padding-small w3-container w3-grey" style="width: 300px;">
+      <div id="setting" class="w3-animate-opacity w3-overlay w3-display-middle" style="display: none; height: fit-content">
+        <div class="w3-clear"><input type="checkbox"></input></div>
+        <div class="w3-clear"><input type="checkbox"></input></div>
+        <div class="w3-clear"><input type="checkbox"></input></div>
+      </div>
       <div class="w3-padding-small w3-center">
         <h1 class="w3-large" style="font-weight: bold;">Transactions history scraping</h1>
       </div>
@@ -10,7 +16,12 @@
         <button class="w3-button w3-padding-small w3-teal" id="ScrpB">Update</button>
       </div>
     </div>
-    <div id="scrapinglist" class="w3-padding-small w3-container w3-light-grey"></div>
+    <div id="Set_n_Lst" class="w3-padding-small w3-container w3-light-grey" style="width: 300px;">
+      <div class="w3-padding-small w3-center" >
+        <a id="_setIcon" class="w3-tiny w3-hover-amber"><i class="fa-solid fa-gear w3-tiny"></i> Settings</a>
+      </div>
+      <div id="scrapinglist" class="w3-padding-small"></div>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>

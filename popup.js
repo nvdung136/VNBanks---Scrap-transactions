@@ -4,7 +4,20 @@
 const ScrpB = document.getElementById("ScrpB")
 var ScrpLst = document.getElementById("scrapinglist")
 let DowB;
+const Set_B = document.getElementById("_setIcon")
+const Set_panel = document.getElementById("setting");
+const SnLstDiv = document.getElementById("setting")
 
+Set_B.addEventListener("click", function () {
+    if(Set_panel.style.display == 'none') {
+        Set_panel.style.display = "block";
+    }
+    else 
+    {
+        Set_panel.style.display = "none";
+        SnLstDiv.style.height = "fit-content";
+    }
+})
 
 ScrpB.addEventListener("click", async  function () {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true}); 

@@ -12,6 +12,7 @@ const TCB_Scrp_string = ['techcom-account-transaction-history','techcom-account-
       case 'TCB':
         _KeyStr = TCB_Scrp_string;
     }
+    let load = await autoLoadMore();
     for (let i=0; i<_KeyStr.length; i++){
       var Scraped = document.querySelector(_KeyStr[i]);
       if(Scraped !== null){
@@ -35,3 +36,18 @@ const TCB_Scrp_string = ['techcom-account-transaction-history','techcom-account-
     return;
   }
 
+  async function autoLoadMore (){
+    var _BuEle = document.querySelector("bb-load-button-ui");
+    var _Bu = (_BuEle!==null) ? _BuEle.querySelector("button") : null;
+    while(_BuEle !== null){
+      _Bu.click();
+      await sleep(1000);
+      _BuEle = document.querySelector("bb-load-button-ui");
+      _Bu = (_BuEle!==null) ? _BuEle.querySelector("button") : null;
+    }
+    return 'done';
+  }
+  
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }

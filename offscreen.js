@@ -82,16 +82,15 @@ function DateUpdate(DateSection){
   }
   if(dateString.match('Yesterday') || dateString.match('qua'))
   {
-    return find_date(1);
+    return find_date(0);
   }
   if(dateString.match('Today') || dateString.match('nay'))
   {
     return find_date(0);
   }
   else 
-    return dateString;
+    return dateString.trim();
 }
-
 
 function find_date(daysApart){
   const date = new Date();
