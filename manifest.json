@@ -1,7 +1,10 @@
 {
-  "name": "VNBanks History Scrap",
+  "name": "Content Script",
   "version": "1.0",
   "manifest_version": 3,
+  "icons": {  "16": "icon/Icon_16.png",
+              "48": "icon/Icon_48.png",
+              "128": "icon/Icon_128.png" },
   "background": {
     "service_worker": "background.js"
   },

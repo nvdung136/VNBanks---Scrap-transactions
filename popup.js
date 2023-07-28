@@ -6,7 +6,8 @@ var ScrpLst = document.getElementById("scrapinglist")
 let DowB;
 const Set_B = document.getElementById("_setIcon")
 const Set_panel = document.getElementById("setting");
-const SnLstDiv = document.getElementById("setting")
+const SnLstDiv = document.getElementById("setting");
+const LoaderLine = document.getElementById("loader_line");
 
 Set_B.addEventListener("click", function () {
     if(Set_panel.style.display == 'none') {
@@ -30,6 +31,7 @@ ScrpB.addEventListener("click", async  function () {
             pipelineID: '1',
             string: 'TCB',
         });
+    LoaderLine.style.display = "block";
 });
 
 chrome.runtime.onMessage.addListener(OnReceive)
@@ -39,7 +41,8 @@ async function OnReceive(message) {
     var _Line2Dis="";
     if(message.target !== 'popup') return;
     const DataArray = message.string;
-    for(let i=1; i< DataArray.length; i++){
+    // with header i = 0 || without header i = 1;
+    for(let i=0; i< DataArray.length; i++){
         let WrtLine ='';
         for (let n=0;n<DataArray[i].length;n++){
             WrtLine += `${DataArray[i][n]}|`;
@@ -60,7 +63,8 @@ async function addDownLoad(info,message){
     DowB.addEventListener('click', function Click(){
         downloadURI('data:text/csv;charset=utf-8,' + (message),info);
     });
-    ScrpLst.appendChild(DowB);  
+    ScrpLst.appendChild(DowB);
+    LoaderLine.style.display = "none";  
 }
 
 function downloadURI(uri, name) {

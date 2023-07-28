@@ -74,22 +74,22 @@ function ValidateEle(ListEle){
 }
 
 function DateUpdate(DateSection){
-  const dateString = DateSection.textContent;
-  if(dateString.match('ago') || dateString.match('ngày')) 
-  {
-      const dayApart = dateString.slice(0,dateString.indexOf(" "));
-      return find_date(dayApart);
-  }
-  if(dateString.match('Yesterday') || dateString.match('qua'))
-  {
-    return find_date(0);
-  }
+  const dateString = DateSection.textContent.trim();
   if(dateString.match('Today') || dateString.match('nay'))
   {
     return find_date(0);
   }
+  if(dateString.match('Yesterday') || dateString.match('qua'))
+  {
+    return find_date(1);
+  }
+  if(dateString.indexOf(" ") !== -1) 
+  {
+      const dayApart = dateString.slice(0,dateString.indexOf(" "));
+      return find_date(dayApart-1);
+  }
   else 
-    return dateString.trim();
+    return dateString;
 }
 
 function find_date(daysApart){
