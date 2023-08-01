@@ -42,7 +42,7 @@ async function OnReceive(message) {
     if(message.target !== 'popup') return;
     const DataArray = message.string;
     // with header i = 0 || without header i = 1;
-    for(let i=0; i< DataArray.length; i++){
+    for(let i=1; i< DataArray.length; i++){
         let WrtLine ='';
         for (let n=0;n<DataArray[i].length;n++){
             WrtLine += `${DataArray[i][n]}|`;

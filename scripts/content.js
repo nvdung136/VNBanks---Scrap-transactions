@@ -17,21 +17,22 @@ const TCB_Scrp_string = ['techcom-account-transaction-history','techcom-account-
       var Scraped = document.querySelector(_KeyStr[i]);
       if(Scraped !== null){
         var HTML_Scraped =  Scraped.innerHTML;
-        SendOrder(_KeyStr[i],HTML_Scraped);
+        SendOrder(_KeyStr[i],HTML_Scraped,request.string);
         return;
       }
     }
   }
 
 
-  async function SendOrder(Scrp_type,receivedMess)
+  async function SendOrder(Scrp_type,sendMess,BANK)
   {
     const response = await chrome.runtime.sendMessage({
       sender: 'content',
       target: 'background',
       pipelineID: '2',
-      string: receivedMess,
+      string: sendMess,
       _addInfo: Scrp_type,
+      _bank:BANK //The target bank that later, background script gonna create the suitable offscreen script to parse
     });
     return;
   }

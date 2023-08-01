@@ -1,10 +1,10 @@
 //Under developing from Van-Dung NGO (email: nvdung136@gmail.com)
 //Original release to github in July of 2023.
 
-
 chrome.runtime.onMessage.addListener(OnReceive);
 
 var keyWords = [];
+
 // This function performs basic filtering and error checking on messages before
 // dispatching the message to a more specific message handler.
 async function OnReceive(message) {
@@ -69,7 +69,7 @@ function ValidateEle(ListEle){
       break;
       }
   }
-  const period = `${TR.date.toString()} to ${ReturnArray[1][0]}`
+  const period = `TCB_${TR.date.toString()} to ${ReturnArray[1][0]}`
   return [ReturnArray,period];
 }
 
@@ -89,7 +89,15 @@ function DateUpdate(DateSection){
       return find_date(dayApart-1);
   }
   else 
-    return dateString;
+  //Temporary re-format dateString
+    if(dateString.match('/')) return format_date(dateString);
+    else return dateString;
+}
+
+function format_date(dayInput){
+  let subStr = dayInput.split("/");
+  let ReturnDate = `${subStr[2]}-${subStr[1]}-${subStr[0]}`;
+  return ReturnDate;
 }
 
 function find_date(daysApart){
@@ -98,8 +106,14 @@ function find_date(daysApart){
   let day = date.getDate();
   let month = (date.getMonth() + 1) > 10 ? (date.getMonth() + 1) : '0'+ (date.getMonth() + 1);
   let year = date.getFullYear();
-
   let day2find = day - daysApart;
+  //Refine the over-the-month date
+  if(day2find <= 0)
+  {
+    month = date.getMonth()-1;
+    day2find = new Date(year,month,0).getDate() + day2find;
+    month = date.getMonth() > 10 ? (date.getMonth() + 1) : '0'+ (date.getMonth() + 1);
+  }
   let returnDate = `${year}-${month}-${day2find}`;
   return returnDate;
 }

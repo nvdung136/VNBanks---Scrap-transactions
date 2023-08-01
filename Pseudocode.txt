@@ -1,0 +1,37 @@
+### Overall procedure flow
+
+1- User to connect onto their transaction request page
+    - Content script kick-in  (done - refreshing the page)
+2- User to click onto extension icon 
+    - "Update" button appear (done)
+        - Click on "Update" - initating message pipeline
+
+        Message pipeline:
+        1 - popup to content 
+            + initating scraping order 
+        2 - content to background 
+            + return the scraped material
+            + initating the offscreen document
+        3 - background to  offscreen
+            + forward the scraped material
+        4 - offscreen to background
+            + return the final-shaped transaction data
+            + close the offscreen document upon finish
+        5 - background to popup
+            + forward the result for download
+
+### Structure revise 
+
+- Popup:    + Interaction pannel
+            + Settings 
+                (*) CSV, XLS .... 
+            
+- Content:  + Identify the target [card/account] 
+            + Scrap raw data section
+
+- Background:   + Managing the offscreen doc
+                + Forward message 
+            
+- Offscreen:    + Do DOM parser to acquire the actual data
+                + Create some transform data if needed
+                    (Vie/Eng ...)
