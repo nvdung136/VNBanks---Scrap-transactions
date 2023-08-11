@@ -1,5 +1,5 @@
 {
-  "name": "Content Script",
+  "name": "TransacScrap-TCB",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {  "16": "icon/Icon_16.png",

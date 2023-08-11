@@ -114,6 +114,7 @@ function find_date(daysApart){
     day2find = new Date(year,month,0).getDate() + day2find;
     month = date.getMonth() > 10 ? (date.getMonth() + 1) : '0'+ (date.getMonth() + 1);
   }
+  day2find = (day2find<10)? `0${day2find}` : `${day2find}`;
   let returnDate = `${year}-${month}-${day2find}`;
   return returnDate;
 }
